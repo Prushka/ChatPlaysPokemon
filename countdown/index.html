@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="timer" style="font-family: 汉仪黑荔枝体简;color:white;font-size:50px;background-color:#282828;text-align:center"><label>Timer</label></div>
+<script type="text/javascript">
+    setInterval("my_function();",1000);
+
+    dt1 = new Date("December 14, 2019 7:00:00");
+
+
+
+    function my_function(){
+        var now = new Date();
+
+        var delta = Math.abs(now - dt1) / 1000;
+
+        // calculate (and subtract) whole days
+        var days = Math.floor(delta / 86400);
+        delta -= days * 86400;
+
+        // calculate (and subtract) whole hours
+        var hours = Math.floor(delta / 3600) % 24;
+        delta -= hours * 3600;
+
+        // calculate (and subtract) whole minutes
+        var minutes = Math.floor(delta / 60) % 60;
+        delta -= minutes * 60;
+
+        // what's left is seconds
+        var seconds = Math.round(delta % 60);  // in theory the modulus is not required
+
+        $('#timer').html(`<br />${days}天${hours}时${minutes}分${seconds}秒<br /><br />`);
+
+
+    }
+</script>
+
+</body>
+</html>
